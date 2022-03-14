@@ -10,21 +10,31 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4  //Generacion aut de id
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+    },
+    summary:{
+      type:DataTypes.STRING,
+    },
+    spoonacularScore:{
+      type: DataTypes.DECIMAL,
+    },
+    healthScore:{
+      type: DataTypes.DECIMAL,
+    },
+    instructions:{
+      type: DataTypes.TEXT,
     },
     image:{
       type: DataTypes.TEXT,
       validate:{isUrl:true},
       defaultValue: 'https://i.pinimg.com/originals/76/c6/46/76c64646e9be7aef25124d07b20aa5e2.jpg'
     },
-    // clientGame:{
-      //   type: DataTypes.BOOLEAN,
-      //   defaultValue: false
-      // }
-      timestamps: false, 
-      createdAt: false,
-      
-    });
+    api:{
+      type: DataTypes.STRING,
+      defaultValue: "noAPI"
+    }
+  },{timestamps: false});
 };

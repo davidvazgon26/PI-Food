@@ -10,9 +10,13 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4  //Generacion aut de id
       },
-    name: {
+    diet: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  });
+    api:{
+      type: DataTypes.STRING,
+      defaultValue: "noAPI"
+    }
+  },{timestamps: false});
 };
