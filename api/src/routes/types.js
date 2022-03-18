@@ -3,6 +3,9 @@ const {Type} = require('../db');
 const routerT = Router();
 const {Op} = require('sequelize')
 
+// const resp = require('../resp.json')
+
+// console.log(resp)
 
 routerT.get("/types", (req, res, next) => {
   try {
@@ -18,16 +21,37 @@ routerT.get("/types", (req, res, next) => {
 
 routerT.post("/types", (req, res, next) => {
   try {
-    const { diet } = req.body;
+    const { diet, api } = req.body;
     Type.create({
       diet,
-      dataDB: true,
+      api: api,
     });
     res.send("Se agrego nuevo tipo de dieta");
   } catch (error) {
     next(error);
   }
 });
+
+routerT.post('/crearlista', async (req, res, next)=>{  //Solo usar para crear la lista de tipo de recetas la primera vez
+  try {
+      const lista = await Type.bulkCreate([
+        {diet: "Vegan",api: "API"},
+        {diet: "Gluten Free",api: "API"},
+        {diet: "Ketogenic",api: "API"},
+        {diet: "Vegetarian",api: "API"},
+        {diet: "Lacto-Vegetarian",api: "API"},
+        {diet: "Ovo-Vegetarian",api: "API"},
+        {diet: "Prescetarian",api: "API"},
+        {diet: "Paleo",api: "API"},
+        {diet: "Primal",api: "API"},
+        {diet: "Low FODMAP",api: "API"},
+        {diet: "Whole30",api: "API"},
+      ])
+      res.send('Se crearon los tipos de dieta de la API')
+  } catch (error) {
+    next(error);
+  }
+})
 
 routerT.put("/types/:id", async (req, res, next) => {
   //Solo modifica elementos de la BD
@@ -36,7 +60,7 @@ routerT.put("/types/:id", async (req, res, next) => {
     const { diet, api } = req.body;
     if (diet) {
       await Type.update(
-        { diet: diet },
+        { diet: diet, api: api },
         {
           where: {
             id: {
@@ -53,7 +77,8 @@ routerT.put("/types/:id", async (req, res, next) => {
 });
 
 routerT.delete("/types", (req, res, next) => {
-  //Solo modifica elementos de la BD
+  try {
+      //Solo modifica elementos de la BD
   const { id } = req.query;
   Type.destroy({
     where: {
@@ -62,7 +87,10 @@ routerT.delete("/types", (req, res, next) => {
       },
     },
   });
-  res.send(`El elemento con id: ${id} fue elilminado`);
+  res.send(`El elemento con id: ${id} fue eliminado`);
+  } catch (error) {
+    next(error);
+  }
 });
 
 

@@ -13,6 +13,7 @@ module.exports = (sequelize) => {
     diet: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     api:{
       type: DataTypes.STRING,
