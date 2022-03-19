@@ -1,10 +1,11 @@
-
+import {Link} from "react-router-dom"
+import s from './noMatch.module.css'
 
 export default function NoMatch(){
     return(
-        <div>
+        <div className={s.fondo}>
 
-            Not Found osea, no encontrado
+            <p>Ruta no encontrada, regresa a: <br/><Link className={s.link} to="/recipes">Inicio</Link></p>
         </div>
     )
 }

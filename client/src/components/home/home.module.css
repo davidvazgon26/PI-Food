@@ -1,0 +1,81 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.body{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-image:  url("../../assets/images/FondoWebHF.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /* flex-wrap: wrap; */
+    align-content: center;
+    justify-content: center;
+
+}
+
+
+
+.bodyT{
+    /* Ubicación de la imagen */
+    background-image:  url("../../assets/images/FondoWebHF.jpg"); 
+    
+    /* Para dejar la imagen de fondo centrada, vertical y horizontalmente */
+    background-position: center center;
+    
+    /* Para que la imagen de fondo no se repita */
+    background-repeat: no-repeat;
+    
+    /* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
+    background-attachment: fixed;
+    
+    /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
+    background-size: cover;
+    
+    /* Se muestra un color de fondo mientras se está cargando la imagen de fondo o si hay problemas para cargarla */
+    background-color: #363838;
+    }
+
+   
+.imagenFondo{
+    border-radius: 40%;
+}
+
+
+.btn {background-image: linear-gradient(to right, #8ea83b 20%, #353333  51%, #8ea83b  100%)}
+.btn {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-decoration: none;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+   position: absolute;
+   left: 17%;
+   top: 52%;
+   pointer-events:all;
+ }
+
+ .btn:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+
+@media only screen and (max-width: 767px) {
+
+   
+}
+
+/* <p style="color: black; font-family: Verdana;">Un párrafo de texto.</p> */

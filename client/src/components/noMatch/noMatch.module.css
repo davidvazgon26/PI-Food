@@ -1,0 +1,29 @@
+.fondo {
+    background: rgb(36, 48, 60);
+    background: radial-gradient(circle, rgba(36, 48, 60, 0.9363095580028886) 14%, rgba(125, 148, 59, 1) 68%, rgba(36, 48, 60, 1) 91%);
+    height: 100vh;
+    text-align: center;
+}
+
+.fondo p {
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 34%;
+    color: #fff;
+}
+
+p {
+    font-size: 38px;
+    font-family: fantasy;
+}
+
+.link {
+    color: #fff;
+    text-decoration: none;
+    pointer-events: auto
+}
+
+.link:hover {
+    color: #24303c;
+}
