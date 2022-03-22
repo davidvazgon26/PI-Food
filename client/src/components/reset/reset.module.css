@@ -1,0 +1,16 @@
+
+
+.btn{
+    width:110px;
+    padding: 3px 0;
+    background: rgba(40, 47, 57,1);
+    color: #FFFFFF;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid white
+}
+
+.btn:hover{
+    border: 2px ;
+    color: rgb(146, 182, 46)
+}

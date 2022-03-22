@@ -1,0 +1,10 @@
+.contenedorCards{
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+}
+
+.loading{
+    display:flex;
+    justify-content: space-around;
+}

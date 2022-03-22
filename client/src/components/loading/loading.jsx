@@ -1,9 +1,11 @@
+import ScopedAnimations from '../animacion/ScopedAnimations.jsx'
 
+import s from './loading.module.css'
 
 export default function Loading(){
     return (
-        <div>
-            Hola desde Loading
+        <div className={s.loading}>
+             <ScopedAnimations/> Loading...
         </div>
     )
 }

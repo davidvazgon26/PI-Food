@@ -1,0 +1,73 @@
+
+.cardContainer{
+    display: flex;
+    border: 2px solid black;
+    border-radius:14px;
+    margin: 14px;
+    width:400px;
+    flex-direction: column;
+
+}
+
+.cardImage{
+    width: 250px;
+    height:auto;
+    border-radius: 14px;
+    margin: 8px;
+}
+
+.p{
+    font-size: 18px;
+    text-align: left;
+    margin: 0 0 0 12px;
+    color: rgba(40, 47, 57,1)
+}
+
+.id{
+    font-size: 18px;
+    background-color: rgb(146, 182, 46);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    color: rgba(40, 47, 57,1)
+}
+
+.titRecipe{
+    background-color: rgb(146, 182, 46);
+    color: rgb(40, 47, 57,1);
+    width: 100%;
+    height: 70px;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+
+.subcontainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.subcontainer2{
+    display: inline-flex;
+}
+
+.link{
+    background-color: rgba(40, 47, 57,1);
+    color: #fff;
+    margin: 4px 30%;
+    text-align: center;
+    border: 1px solid white;
+    border-radius:14px;
+    padding: 5px;
+    text-decoration: none;
+    margin-bottom:7px
+}
+
+.link:hover{
+    color: rgba(40, 47, 57,1);
+    background-color: rgb(146, 182, 46)
+}

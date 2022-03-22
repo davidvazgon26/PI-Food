@@ -1,10 +1,10 @@
 import Recipes from '../recipes/recipes.jsx'
 import SearchBar from '../searchBar/searchbar.jsx'
 import OrderABC from '../order/orderABC.jsx'
-import OrderPuntuacion from '../order/orderPuntuacion.jsx'
+import OrderByScore from '../order/orderByScore.jsx'
 import NavBar from '../navbar/navbar.jsx'
 import FiltrarDieta from '../filtrados/filtroDieta.jsx'
-import FiltroAPINoAPi from '../filtrados/filtroApiNoApi.jsx'
+import FiltroAPINoAPI from '../filtrados/filtroApiNoApi.jsx'
 import Paginado from '../paginado/paginado.jsx'
 import Reset from '../reset/reset.jsx'
 import Footer from '../footer/footer.jsx'
@@ -19,9 +19,9 @@ export default function Principal () {
             <summary>Desplegar filtros</summary>
                 <div>
                     <OrderABC/>
-                    <OrderPuntuacion/>
+                    <OrderByScore/>
                     <FiltrarDieta/>
-                    <FiltroAPINoAPi/>
+                    <FiltroAPINoAPI/>
                     <SearchBar/>
                     <Reset/>
                 </div>
@@ -30,7 +30,7 @@ export default function Principal () {
             <div>
                 <Paginado/>
             </div>
-            Hola desde Principal
+            
             <Recipes/>
             <Footer/>
 

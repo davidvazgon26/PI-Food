@@ -16,14 +16,20 @@ export default function Recipes(){
         dispatch(getRecipes())
     },[dispatch])
 
-    return<div>
-            {recipes.length > 0?
-                    recipes.map((recipe)=>{
-                        console.log(recipe)
-                        return <Recipe key={recipe.id} id={recipe.id} title={recipe.title} image={recipe.image}/>
-                    })
-                :<div><Loading/></div>
-            }
+    return (
+      <div>
+        <div className={s.contenedorCards}>
+          {recipes.length > 0 ? (
+            recipes.map((recipe) => {
+              return (
+                <Recipe key={recipe.id} id={recipe.id} title={recipe.title} image={recipe.image}
+                  types={recipe.types} />
+              );
+            })
+          ) : ( <div className={s.loading}> <Loading /></div> )
+          }
         </div>
+      </div>
+    );
     
 }

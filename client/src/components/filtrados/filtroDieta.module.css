@@ -1,0 +1,9 @@
+.ordenContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#select{
+    width: 110px;
+}

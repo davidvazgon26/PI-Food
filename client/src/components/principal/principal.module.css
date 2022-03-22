@@ -1,8 +1,9 @@
 .fondo {
     background: rgb(255, 255, 255);
     background: linear-gradient(90deg, rgba(255, 255, 255, 1) 32%, rgba(125, 148, 59, 0.7206232834930848) 78%);
-    height: 100vh;
     text-align: center;
+    background-size: cover;
+
 }
 
 .menu{
