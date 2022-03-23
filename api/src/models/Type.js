@@ -18,6 +18,12 @@ module.exports = (sequelize) => {
     api:{
       type: DataTypes.STRING,
       defaultValue: "noAPI"
+    },
+    image:{
+      type: DataTypes.TEXT,
+      validate:{isUrl:true},
+      defaultValue: 'https://spoonacular.com/application/frontend/images/badges/popular.svg'
+
     }
   },{timestamps: false});
 };

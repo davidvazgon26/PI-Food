@@ -33,8 +33,8 @@ const acomodarDatosDB = (item) =>{
         healthScore: item.healthScore,
         instructions: item.instructions, //.replace(/\n,','/g,'.').split(',')
         image: item.image,
-        api: item.api
-        // types: item.diets.map(each =>each),
+        api: item.api,
+        types: item.types?.map(each =>each.dataValues.diet),
      }
      return obj
 }
@@ -63,13 +63,13 @@ routerR.get('/demo',(req,res,next)=>{
 })
 
 //GET sin parametro para todos y con query para el buscador /api/recipes  o ?title=title
-routerR.get('/recipes',(req, res,next) => {
+routerR.get('/',(req, res,next) => {
     try {
 
         let resultAPI;
         let resultDB;
         let {title} = req.query;
-        console.log(req.query)
+        // console.log(req.query)
 
         if (title) {
             resultAPI = fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKey}&addRecipeInformation=true&offset=0&number=100&query=${title}`)
@@ -83,7 +83,7 @@ routerR.get('/recipes',(req, res,next) => {
                 }        
             })
         } else {
-            resultAPI = fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKey}&addRecipeInformation=true&offset=0&number=3`)
+            resultAPI = fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKey}&addRecipeInformation=true&offset=0&number=60`)
      
             resultDB = Recipe.findAll({include:Type})
         }
@@ -105,22 +105,37 @@ routerR.get('/recipes',(req, res,next) => {
     }
 })
 // GET por params /api/recipes:idReceta para el detalle
-routerR.get('/recipes/:idReceta', async (req, res,next) => {
+routerR.get('/:idReceta', async (req, res,next) => {
     try {
         let {idReceta} = req.params
-        let respuesta  = await axios.get(`https://api.spoonacular.com/recipes/${idReceta}/information?apiKey=${APIKey}`)
-        let result = acomodarDatos(respuesta.data)
+        let result
+        // console.log(idReceta)
+        if (idReceta.length>9) {
+            let respuesta = await Recipe.findAll({
+                include: Type,
+                where: {
+                    id : idReceta
+                } 
+            })
+            // console.log(respuesta[0].dataValues)
+            result = acomodarDatosDB(respuesta[0].dataValues)
+
+        } else {
+            let respuesta  = await axios.get(`https://api.spoonacular.com/recipes/${idReceta}/information?apiKey=${APIKey}`)
+            result = acomodarDatos(respuesta.data)
+        }
+
         res.send(result)
     } catch (error) {
         next(error);
     }
 })
 // POST por body /api/recipes, body
-routerR.post('/recipes', async (req, res,next) => {
+routerR.post('/', async (req, res,next) => {
     try {
         let resultado  = acomodarDatosDB(req.body)
         let result = await Recipe.create(resultado)
-        res.json({'Se creo correctamente la nueva receta': result})
+        res.status(201).json({'Se creo correctamente la nueva receta': result})
     } catch (error) {
         next(error);
     }
@@ -137,7 +152,7 @@ routerR.post('/:recipeId/type/:typeId', async (req, res, next)=>{
     }
 })
 // PUT por query y body  /api/recipes?idReceta= id a modificar
-routerR.put('/recipes', async (req, res,next) => {
+routerR.put('/', async (req, res,next) => {
   try {
     let {idReceta} = req.query
     for (const key in obj = req.body) {
@@ -159,7 +174,7 @@ routerR.put('/recipes', async (req, res,next) => {
   }
 })
 //DELETE por params /api/recipes/:id
-routerR.delete('/recipes/:id',(req, res,next) => {
+routerR.delete('/:id',(req, res,next) => {
    try {
     let {id} = req.params
     Recipe.destroy({

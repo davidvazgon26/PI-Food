@@ -7,7 +7,7 @@ const {Op} = require('sequelize')
 
 // console.log(resp)
 
-routerT.get("/types", (req, res, next) => {
+routerT.get("/", (req, res, next) => {
   try {
     const result = Type.findAll();
     result.then((response) => {
@@ -19,7 +19,7 @@ routerT.get("/types", (req, res, next) => {
   }
 });
 
-routerT.post("/types", (req, res, next) => {
+routerT.post("/", (req, res, next) => {
   try {
     const { diet, api } = req.body;
     Type.create({
@@ -35,17 +35,17 @@ routerT.post("/types", (req, res, next) => {
 routerT.post('/crearlista', async (req, res, next)=>{  //Solo usar para crear la lista de tipo de recetas la primera vez
   try {
       const lista = await Type.bulkCreate([
-        {diet: "Vegan",api: "API"},
-        {diet: "Gluten Free",api: "API"},
-        {diet: "Ketogenic",api: "API"},
-        {diet: "Vegetarian",api: "API"},
-        {diet: "Lacto-Vegetarian",api: "API"},
-        {diet: "Ovo-Vegetarian",api: "API"},
-        {diet: "Prescetarian",api: "API"},
-        {diet: "Paleo",api: "API"},
-        {diet: "Primal",api: "API"},
-        {diet: "Low FODMAP",api: "API"},
-        {diet: "Whole30",api: "API"},
+        {diet: "vegan",api: "API", image:"https://spoonacular.com/application/frontend/images/badges/vegan.svg"},
+        {diet: "gluten Free",api: "API", image:"https://spoonacular.com/application/frontend/images/badges/gluten-free.svg"},
+        {diet: "ketogenic",api: "API", image:""},
+        {diet: "vegetarian",api: "API", image:"https://spoonacular.com/application/frontend/images/badges/vegetarian.svg"},
+        {diet: "lacto-Vegetarian",api: "API", image:"https://spoonacular.com/application/frontend/images/badges/vegetarian.svg"},
+        {diet: "ovo-Vegetarian",api: "API", image:"https://spoonacular.com/application/frontend/images/badges/vegetarian.svg"},
+        {diet: "prescetarian",api: "API", image:"https://spoonacular.com/application/frontend/images/badges/pescetarian.svg"},
+        {diet: "paleo",api: "API", image:"https://spoonacular.com/application/frontend/images/badges/paleo.svg"},
+        {diet: "primal",api: "API", image:"https://spoonacular.com/application/frontend/images/badges/primal.svg"},
+        {diet: "low FODMAP",api: "API"},
+        {diet: "whole30",api: "API"},
       ])
       res.send('Se crearon los tipos de dieta de la API')
   } catch (error) {
@@ -53,7 +53,7 @@ routerT.post('/crearlista', async (req, res, next)=>{  //Solo usar para crear la
   }
 })
 
-routerT.put("/types/:id", async (req, res, next) => {
+routerT.put("/:id", async (req, res, next) => {
   //Solo modifica elementos de la BD
   try {
     const { id } = req.params;
@@ -76,7 +76,7 @@ routerT.put("/types/:id", async (req, res, next) => {
   }
 });
 
-routerT.delete("/types", (req, res, next) => {
+routerT.delete("/", (req, res, next) => {
   try {
       //Solo modifica elementos de la BD
   const { id } = req.query;
