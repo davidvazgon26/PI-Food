@@ -1,11 +1,11 @@
 .root {
-    padding: 10px 10px;
+    padding: 20px 20px;
   }
   
   .ball {
       composes: bounce from "./animations.module.css";
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
       border-radius: 20px;
       background: rgb(146, 182, 46);
   

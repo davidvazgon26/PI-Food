@@ -8,6 +8,8 @@ export const FILTER_PLACE = 'FILTER_PLACE'
 export const DIET_FILTER = 'DIET_FILTER'
 export const RECIPE_SEARCH = 'RECIPE_SEARCH'
 export const RESET = 'RESET'
+export const PAGINADO = 'PAGINADO'
+export const DETAIL = 'DETAIL'
 
 
 export function getRecipes() {
@@ -87,6 +89,35 @@ export function reset(){
     type:RESET
   }
 }
+
+export function filterPag(count, max){
+  return{
+    type:PAGINADO,
+    payload:{
+      count,
+      max
+  }
+  }
+}
+
+export function detalle(idReceta){
+  return  function(dispatch){
+    axios.get('/api/recipes/'+ idReceta)
+    .then((recipes)=>{
+      dispatch({
+        type:DETAIL,
+        payload: recipes.data
+      })
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  }
+  
+}
+
+
+
 
 
 

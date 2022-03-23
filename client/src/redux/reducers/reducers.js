@@ -1,10 +1,12 @@
-import {GET_RECIPES, GET_TIPOS, SORT_ABC, SORT_BY_SCORE, FILTER_PLACE, DIET_FILTER, RECIPE_SEARCH, RESET} from '../actions/actions.js'
+import {GET_RECIPES, GET_TIPOS, SORT_ABC, SORT_BY_SCORE, FILTER_PLACE, DIET_FILTER, RECIPE_SEARCH, RESET, PAGINADO, DETAIL} from '../actions/actions.js'
 
 const initialState ={
     recipes: [],
     filtroRecipes: [],
     types:[],
-    message:[]
+    recipesShow:[],
+    message:[],
+    detalle:{}
 }
 
 export default function recipeReducer(state=initialState, action){
@@ -22,7 +24,7 @@ export default function recipeReducer(state=initialState, action){
            }
         case SORT_ABC:
             let sortRecipes = [...state.filtroRecipes]
-            
+
             sortRecipes = sortRecipes.sort((a,b)=>{
                 if(a.title < b.title){
                     return action.payload === "ascendente"? -1 : 1;
@@ -55,7 +57,7 @@ export default function recipeReducer(state=initialState, action){
             }
         case FILTER_PLACE:
             let valor = action.payload
-            const newFilter = state.filtroRecipes.filter((item)=>{
+            const newFilter = state.recipes.filter((item)=>{
                let resultado = item.api === valor?true:false
                 return resultado
            })
@@ -67,7 +69,7 @@ export default function recipeReducer(state=initialState, action){
             // console.log(action.payload)
             // console.log(state.filtroRecipes)
             let valorFilter = action.payload
-            const dietFilter = state.filtroRecipes.filter((item)=>{ 
+            const dietFilter = state.recipes.filter((item)=>{
                 // console.log(item.types.includes(valorFilter))
                 // console.log(Object.values(item.types))
                 let arr = [];
@@ -83,25 +85,37 @@ export default function recipeReducer(state=initialState, action){
                 let result = item.api ==="API"?item.types.includes(valorFilter):item.types.length>0?arr.includes(valorFilter):false
                 return result
             })
-            // console.log(dietFilter)
             return {
                 ...state,
-            filtroRecipes : valorFilter === "Todos"?state.recipes:dietFilter
+                message : valorFilter === "Todos"?"":dietFilter.length===0?alert('Sin datos que mostrar'):'',
+            filtroRecipes : valorFilter === "Todos"?state.recipes:dietFilter.length===0?state.filtroRecipes:dietFilter,
             }
         case RECIPE_SEARCH:
             let arr =[]
-            console.log(action.payload)
             return{
                 ...state,
                 message: action.payload.length<=0?alert('No se encontro la receta solicitada'):'',
                 filtroRecipes: action.payload.length>0?action.payload:state.filtroRecipes
             }
+        case PAGINADO:
+            let count = action.payload.count
+            let max = action.payload.max
+            const result = state.filtroRecipes.slice(count, max)
+                return {
+                    ...state,
+                    recipesShow: result
+                }
         case RESET:
             return{
                 ...state,
                 filtroRecipes: state.recipes
             }
-    
+        case DETAIL:
+            return {
+                ...state,
+                detalle: action.payload
+            }
+
         default:
             return state;
     }

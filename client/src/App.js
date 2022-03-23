@@ -17,7 +17,7 @@ function App() {
     <Routes>
           <Route index  element={<Home/>}/>
           <Route path="/recipes"  element={<Principal/>} />
-          <Route path="/recipes/:id"  element={<Detail/>} />
+          <Route path="/recipes/:idReceta"  element={<Detail/>} />
           <Route path="/agregar"  element={<AddRecipe/>} />
           <Route path="/about"  element={<About/>} />
           <Route path="*" element={<NoMatch/>} />

@@ -1,0 +1,76 @@
+.container{
+    display: flex;
+    justify-content: center;
+
+}
+
+.card{
+    margin: 50px 0;
+    border: 1px solid #000;
+    border-radius: 14px;
+    width: 750px;
+}
+
+p{
+    font-size:19px;
+}
+
+img{
+    width: 450px;
+    border-radius: 14px;
+    margin: 15px 0 0 15px;
+}
+
+.id{
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    color: black;
+}
+
+.pp{
+    background-color: rgb(197, 195, 195)
+}
+
+.media{
+    display: flex;
+}
+
+.db{
+    margin: 0 15px; 
+    padding: 1px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: rgb(146, 182, 46);
+
+}
+
+h2{
+    font-size:30px;
+    text-align: center;
+    background-color: rgb(146, 182, 46,.8);
+}
+
+.divMedia{
+    margin: 15px 0 0 50px;
+}
+
+.tipos{
+    display: flex;
+    flex-direction: column;
+    margin: 35px 0;
+}
+
+.summary{
+ margin: 15px 0 0 15px;
+}
+
+.instructions{
+    margin: 15px 0 15px 15px;
+}
+
+.link{
+    position: relative;
+    right: 600%;
+    top: 10px
+}

@@ -10,15 +10,14 @@ import s from './recipes.module.css'
 
 
 export default function Recipes(){
-    let recipes = useSelector((state)=> state.filtroRecipes);
+    let recipes = useSelector((state)=> state.recipesShow);
     let dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getRecipes())
     },[dispatch])
 
     return (
-      <div>
-        <div className={s.contenedorCards}>
+      <div className={s.contenedorCards}>
           {recipes.length > 0 ? (
             recipes.map((recipe) => {
               return (
@@ -29,7 +28,6 @@ export default function Recipes(){
           ) : ( <div className={s.loading}> <Loading /></div> )
           }
         </div>
-      </div>
     );
     
 }
