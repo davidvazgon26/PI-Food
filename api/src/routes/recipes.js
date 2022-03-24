@@ -40,7 +40,7 @@ const acomodarDatosDB = (item) =>{
 }
 
 const respuesta = require('../respuesta.json')
-
+// es solo una demo para usar con el json
 routerR.get('/demo',(req,res,next)=>{
     let arr =[]
     // console.log(respuesta)
@@ -69,7 +69,6 @@ routerR.get('/',(req, res,next) => {
         let resultAPI;
         let resultDB;
         let {title} = req.query;
-        // console.log(req.query)
 
         if (title) {
             resultAPI = fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKey}&addRecipeInformation=true&offset=0&number=100&query=${title}`)
@@ -104,6 +103,7 @@ routerR.get('/',(req, res,next) => {
         next(error);
     }
 })
+
 // GET por params /api/recipes:idReceta para el detalle
 routerR.get('/:idReceta', async (req, res,next) => {
     try {
@@ -130,6 +130,7 @@ routerR.get('/:idReceta', async (req, res,next) => {
         next(error);
     }
 })
+
 // POST por body /api/recipes, body
 routerR.post('/', async (req, res,next) => {
     try {
@@ -140,6 +141,7 @@ routerR.post('/', async (req, res,next) => {
         next(error);
     }
 })
+
 //POST por params para tabla de relaciones
 routerR.post('/:recipeId/type/:typeId', async (req, res, next)=>{
     try {
@@ -151,6 +153,7 @@ routerR.post('/:recipeId/type/:typeId', async (req, res, next)=>{
         next(error);
     }
 })
+
 // PUT por query y body  /api/recipes?idReceta= id a modificar
 routerR.put('/', async (req, res,next) => {
   try {
@@ -173,6 +176,7 @@ routerR.put('/', async (req, res,next) => {
       next(error);
   }
 })
+
 //DELETE por params /api/recipes/:id
 routerR.delete('/:id',(req, res,next) => {
    try {

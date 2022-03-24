@@ -2,6 +2,9 @@ const { Router } = require('express');
 const {Type} = require('../db');
 const routerT = Router();
 const {Op} = require('sequelize')
+require('dotenv').config();
+const { APIKey } = process.env;
+const fetch = require("node-fetch")
 
 // const resp = require('../resp.json')
 
@@ -18,6 +21,28 @@ routerT.get("/", (req, res, next) => {
     next(error);
   }
 });
+
+// Traer en automatico dietas de la API
+routerT.get('/diets', (req,res,next)=>{
+  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKey}&addRecipeInformation=true&offset=0&number=100`)
+  .then(response => response.json())
+  .then(result => {
+    let arr = []
+    let arr2 =[]
+    arr = result.results.map(item => item.diets)
+    arr.flat().forEach((item) =>{
+      
+      if (!arr2.includes(item)) {
+          arr2.push(item)
+          Type.create({ 
+            diet: item, api: "API",
+          })
+      }      
+    })
+    console.log(arr2)
+    res.send(arr2)
+  })
+})
 
 routerT.post("/", (req, res, next) => {
   try {
