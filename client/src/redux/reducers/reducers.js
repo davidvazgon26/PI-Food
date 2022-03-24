@@ -91,7 +91,7 @@ export default function recipeReducer(state=initialState, action){
             filtroRecipes : valorFilter === "Todos"?state.recipes:dietFilter.length===0?state.filtroRecipes:dietFilter,
             }
         case RECIPE_SEARCH:
-            let arr =[]
+            // let arr =[]
             return{
                 ...state,
                 message: action.payload.length<=0?alert('No se encontro la receta solicitada'):'',

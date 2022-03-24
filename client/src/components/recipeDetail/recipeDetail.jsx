@@ -14,9 +14,16 @@ export default function Detail(){
     
     useEffect(()=>{
         dispatch(detalle(idReceta))
-    },[])
+    },[dispatch])
 
 // console.log(recipes)
+    // let texto = recipes.summary.replace(/&(lt|gt);/g,)
+    // let summary = recipes.summary.replace(/<\/?[^>]+(>|$)/g, "")
+
+    // console.log(texto)
+
+    // let sum = recipes.summary.replaceAll('/',"")
+
     return (
       <div className={s.container}>
         {recipes ? (
@@ -29,7 +36,7 @@ export default function Detail(){
             </div>
             <h2>{recipes.title}</h2>
             <div className={s.media}>
-              <img src={recipes.image} />
+              <img src={recipes.image} alt="imagen" />
               <div className={s.divMedia}>
                 <p>Healt Score: {recipes.healthScore}</p>
                 <p>Score: {recipes.spoonacularScore}</p>
@@ -42,7 +49,8 @@ export default function Detail(){
               </div>
             </div>
             <p className={s.summary}>
-              Summary: <br /> {recipes.summary}
+              Summary: <br />
+              {recipes.summary?.replaceAll(/<\/?[^>]+(>|$)/g, "")} 
             </p>
             <p className={s.instructions}>
               Instructions: <br />
