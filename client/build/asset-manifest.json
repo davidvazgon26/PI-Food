@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.00768258.chunk.css",
+    "main.js": "/static/js/main.b87f4364.chunk.js",
+    "main.js.map": "/static/js/main.b87f4364.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.12af9c73.js",
+    "runtime-main.js.map": "/static/js/runtime-main.12af9c73.js.map",
+    "static/js/2.245441da.chunk.js": "/static/js/2.245441da.chunk.js",
+    "static/js/2.245441da.chunk.js.map": "/static/js/2.245441da.chunk.js.map",
+    "static/js/3.a3dfe94d.chunk.js": "/static/js/3.a3dfe94d.chunk.js",
+    "static/js/3.a3dfe94d.chunk.js.map": "/static/js/3.a3dfe94d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.00768258.chunk.css.map": "/static/css/main.00768258.chunk.css.map",
+    "static/js/2.245441da.chunk.js.LICENSE.txt": "/static/js/2.245441da.chunk.js.LICENSE.txt",
+    "static/media/home.module.css": "/static/media/FondoWebHF.9893793d.jpg",
+    "static/media/cooking.1093ea1d.png": "/static/media/cooking.1093ea1d.png",
+    "static/media/platilloGenerico.16d11612.png": "/static/media/platilloGenerico.16d11612.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.12af9c73.js",
+    "static/js/2.245441da.chunk.js",
+    "static/css/main.00768258.chunk.css",
+    "static/js/main.b87f4364.chunk.js"
+  ]
+}

@@ -14,15 +14,10 @@ export default function Detail(){
     
     useEffect(()=>{
         dispatch(detalle(idReceta))
-    },[dispatch])
+    },[idReceta, dispatch])
 
-// console.log(recipes)
     // let texto = recipes.summary.replace(/&(lt|gt);/g,)
     // let summary = recipes.summary.replace(/<\/?[^>]+(>|$)/g, "")
-
-    // console.log(texto)
-
-    // let sum = recipes.summary.replaceAll('/',"")
 
     return (
       <div className={s.container}>

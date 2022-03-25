@@ -10,6 +10,7 @@ export const RECIPE_SEARCH = 'RECIPE_SEARCH'
 export const RESET = 'RESET'
 export const PAGINADO = 'PAGINADO'
 export const DETAIL = 'DETAIL'
+// export const POST_TYPES = 'POST_TYPES'
 
 
 export function getRecipes() {
@@ -40,6 +41,17 @@ export function getTypes() {
   };
 }
 
+// export function postType(diet){
+//   console.log(diet)
+//   return async function (dispatch) {
+//     try {
+//       let result = await axios.post("/api/types",diet)
+
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
+// }
 
 export function sortABC(orden){
   return {

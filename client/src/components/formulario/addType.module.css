@@ -1,0 +1,51 @@
+
+
+.formRecipe {
+    display: flex;
+    align-items: center;
+    margin: 20px 20%;
+    /* border: 1px solid black;
+    border-radius: 14px; */
+    flex-direction: column;
+}
+
+.formRecipe label {
+    font-size: 22px;
+    font-family: bold;
+    display: flex;
+    align-items: center;
+}
+
+#title {
+    width: 50%;
+    font-size: 16px;
+    margin-bottom:5px
+}
+
+
+.types{
+    margin-bottom: 8px;
+}
+
+.btnDiv{
+    width: 100%;
+    justify-content:center
+}
+
+.btnSubmit {
+    font-size: 16px;
+    margin: 18px;
+    padding: 4px 18px;
+    border-radius: 8px;
+    color: white;
+    background: rgba(40, 47, 57, 1)
+}
+
+.btn2{
+    font-size: 16px;
+    margin: 18px;
+    padding: 4px 18px;
+    border-radius: 8px;
+    color: rgb(255, 255, 255, 0.3);
+    background: rgba(96, 96, 99, 0.3);
+}
