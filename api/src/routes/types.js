@@ -24,7 +24,7 @@ routerT.get("/", (req, res, next) => {
 
 // Traer en automatico dietas de la API
 routerT.get('/diets', (req,res,next)=>{
-  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKey}&addRecipeInformation=true&offset=0&number=100`)
+  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKey}&addRecipeInformation=true&offset=600&number=200`)
   .then(response => response.json())
   .then(result => {
     let arr = []
@@ -101,17 +101,26 @@ routerT.put("/:id", async (req, res, next) => {
   }
 });
 
-routerT.delete("/", (req, res, next) => {
+routerT.delete("/", async (req, res, next) => {
   try {
       //Solo modifica elementos de la BD
   const { id } = req.query;
-  Type.destroy({
-    where: {
-      id: {
-        [Op.eq]: id,
+  let verifica = await Type.findOne({
+    where: { id: id }
+  })
+
+  if (verifica) {
+    await Type.destroy({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
       },
-    },
-  });
+    });
+  }else{ 
+    res.status(404).send('Not found')
+  }
+  
   res.send(`El elemento con id: ${id} fue eliminado`);
   } catch (error) {
     next(error);
