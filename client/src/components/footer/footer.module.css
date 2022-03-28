@@ -1,0 +1,35 @@
+.fondo{
+    background-color: rgba(36, 48, 60, 0.9363095580028886);
+    border-top: 3px solid rgba(125, 148, 59, 0.9);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    color: white;
+    margin:auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-between
+}
+
+.iconos{
+    font-size:38px;
+    margin:6px
+}
+
+.icon{
+    color: white;
+    text-align: right;
+    width: 55%;
+}
+
+.by{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.links{
+    color: #fff;
+    pointer-events: all;
+}

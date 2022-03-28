@@ -51,7 +51,7 @@ export default function AddRecipe(){
     function onInputChange(event) {
       event.preventDefault();
       if (event.target.name === 'title') {
-        if(!/^([a-z]+[\s]*)+$/.test(event.target.value)){
+        if(!/^([A-z]+[\s]*)+$/.test(event.target.value)){
             setErrorInput('El Titulo solo acepta letras, sin numeros');
         }else{
             setErrorInput('')

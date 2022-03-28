@@ -63,10 +63,14 @@ h2{
 
 .summary{
  margin: 15px 0 0 15px;
+ width: 730px;
+ word-wrap: break-word;
 }
 
 .instructions{
     margin: 15px 0 15px 15px;
+    width: 730px;
+    word-wrap: break-word;
 }
 
 .link{

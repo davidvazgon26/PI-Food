@@ -1,8 +1,13 @@
 
 .contenedorForm {
     text-align: center;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(130deg, rgba(255, 255, 255, 1) 38%, rgba(125, 148, 59, 1) 66%);
+    /* background: rgb(255, 255, 255);
+    background: linear-gradient(130deg, rgba(255, 255, 255, 1) 38%, rgba(125, 148, 59, 1) 66%); */
+    background-image: url('https://st3.depositphotos.com/1194063/16112/i/600/depositphotos_161128296-stock-photo-ingredients-for-homemade-green-basil.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .btnRegresar {
@@ -16,6 +21,10 @@
 
 .h2 {
     background: rgba(40, 47, 57, 0.6);
+    color: white
+}
+
+label{
     color: white
 }
 
@@ -88,6 +97,10 @@
     background: rgba(40, 47, 57, 1)
 }
 
+.btnSubmit:hover{
+    background-color: rgba(125, 148, 59, 0.9);
+}
+
 /* .btn {
     padding: 4px 24px;
     border-radius: 14px;
@@ -106,5 +119,10 @@
 }
 
 :focus-visible{
-    outline: 2px solid rgb(87, 32, 30)
+    outline: 3px solid rgb(166, 197, 81);
+}
+
+.errorname{
+    color: rgb(219, 84, 84);
+    font-size: 22px
 }

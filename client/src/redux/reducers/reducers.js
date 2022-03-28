@@ -66,12 +66,10 @@ export default function recipeReducer(state=initialState, action){
             filtroRecipes : valor === "Todos"?state.recipes:newFilter
             }
         case DIET_FILTER:
-            // console.log(action.payload)
-            // console.log(state.filtroRecipes)
+          
             let valorFilter = action.payload
             const dietFilter = state.recipes.filter((item)=>{
-                // console.log(item.types.includes(valorFilter))
-                // console.log(Object.values(item.types))
+               
                 let arr = [];
 
                 if (item.api !== "API"&& item.types.length > 0) {
@@ -79,9 +77,7 @@ export default function recipeReducer(state=initialState, action){
                         return el.diet
                     })
                 }
-                // console.log(arr)
-                // item.api !== "API"?console.log(item.types[1]?.diet):console.log('')
-                // item.api !== "API"?console.log(Object.values(item.types[0])):console.log('')
+                console.log(arr)
                 let result = item.api ==="API"?item.types.includes(valorFilter):item.types.length>0?arr.includes(valorFilter):false
                 return result
             })

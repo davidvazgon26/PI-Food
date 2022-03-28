@@ -7,7 +7,9 @@ import logo from '../../assets/images/cooking.png'
 export default function NavBar (){
 return (
   <div className={s.container}>
+  <Link className={s.link} to="/">
     <img className={s.img} src={logo} alt="imagen logo"/>
+    </Link>
           <p className={s.parrafo}>Welcome to the recipe catalog </p>
     <nav className={s.navegacion}>
       <ul>
