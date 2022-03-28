@@ -1,12 +1,11 @@
 const { Router } = require('express');
-const routerR = Router();
 require('dotenv').config();
 const { APIKey } = process.env;
-const {Recipe} = require('../db');
-const {Type} = require('../db');
+const {Recipe, Type} = require('../db');
 const fetch = require("node-fetch")
 const axios = require('axios')
 const {Op} = require('sequelize')
+const routerR = Router();
 // const ctrl = require('./controller')
 
 const acomodarDatos = (item) =>{
@@ -41,9 +40,9 @@ const acomodarDatosDB = (item) =>{
 
 const respuesta = require('../respuesta.json')
 // es solo una demo para usar con el json
-routerR.get('/demo',(req,res,next)=>{
+routerR.get('/demo',async (req,res,next)=>{
     let arr =[]
-    // console.log(respuesta)
+
     arr = respuesta.results.map(item =>{
         obj = {
             id: item.id,
