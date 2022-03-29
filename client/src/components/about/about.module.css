@@ -32,13 +32,13 @@ p {
 .externo{
     background: rgb(40, 47, 57,1);
     width: 100%;
-    height:100%;
+    height:auto;
     position: absolute;
     background-image: url('https://st3.depositphotos.com/1194063/16112/i/600/depositphotos_161128296-stock-photo-ingredients-for-homemade-green-basil.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: contain;
 }
 
 .titulo{
@@ -50,7 +50,6 @@ p {
     margin: 12px auto;
     border-radius: 8px;
     padding:2px 16px;
-    margin-top: 50px;
 }
 
 .divMenu{

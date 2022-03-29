@@ -3,6 +3,7 @@ import {useEffect} from 'react'
 import { useParams } from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {detalle} from '../../redux/actions/actions'
+import {clean} from '../../redux/actions/actions'
 
 import Loading from '../loading/loading.jsx'
 import s from './recipeDetail.module.css'
@@ -13,7 +14,10 @@ export default function Detail(){
     let dispatch = useDispatch();
     
     useEffect(()=>{
-        dispatch(detalle(idReceta))
+        dispatch(detalle(idReceta));
+        return () =>{
+          dispatch(clean())
+        }
     },[idReceta, dispatch])
 
     // let texto = recipes.summary.replace(/&(lt|gt);/g,)
@@ -25,6 +29,7 @@ export default function Detail(){
           <div className={s.card}>
             <div className={s.id}>
               <p className={s.db}>
+              {console.log(recipes.api)}
                 {recipes.api === "noAPI" ? "DB" : recipes.api}
               </p>
               <p className={s.pp}>Id: {recipes.id}</p>

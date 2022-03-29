@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { getRecipes } from '../../redux/actions/actions';
 
+
 //Componentes
 import Recipe from '../recipe/recipe.jsx'
 import Loading from '../loading/loading.jsx'
@@ -13,7 +14,8 @@ export default function Recipes(){
     let recipes = useSelector((state)=> state.recipesShow);
     let dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getRecipes())
+        dispatch(getRecipes());
+        
     },[dispatch])
 
     return (
