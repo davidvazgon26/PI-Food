@@ -24,7 +24,7 @@ routerT.get("/", (req, res, next) => {
 
 // Traer en automatico dietas de la API
 routerT.get('/diets', (req,res,next)=>{
-  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKey}&addRecipeInformation=true&offset=600&number=200`)
+  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKey}&addRecipeInformation=true&offset=600&number=100`)
   .then(response => response.json())
   .then(result => {
     let arr = []
