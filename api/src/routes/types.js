@@ -30,16 +30,16 @@ routerT.get('/diets', (req,res,next)=>{
     let arr = []
     let arr2 =[]
     arr = result.results.map(item => item.diets)
-    arr.flat().forEach((item) =>{
-      
+    arr.flat().sort().forEach((item) =>{
+
       if (!arr2.includes(item)) {
           arr2.push(item)
-          Type.create({ 
+          Type.create({
             diet: item, api: "API",
           })
-      }      
+      }
     })
-    console.log(arr2)
+    // console.log(arr2)
     res.send(arr2)
   })
 })
@@ -78,54 +78,61 @@ routerT.post('/crearlista', async (req, res, next)=>{  //Solo usar para crear la
   }
 })
 
-routerT.put("/:id", async (req, res, next) => {
-  //Solo modifica elementos de la BD
-  try {
-    const { id } = req.params;
-    const { diet, api } = req.body;
-    if (diet) {
-      await Type.update(
-        { diet: diet, api: api },
-        {
-          where: {
-            id: {
-              [Op.eq]: id,
-            },
-          },
-        }
-      );
-      res.send("elemento actualizado");
-    }
-  } catch (error) {
-    next(error);
-  }
-});
 
-routerT.delete("/", async (req, res, next) => {
-  try {
-      //Solo modifica elementos de la BD
-  const { id } = req.query;
-  let verifica = await Type.findOne({
-    where: { id: id }
-  })
 
-  if (verifica) {
-    await Type.destroy({
-      where: {
-        id: {
-          [Op.eq]: id,
-        },
-      },
-    });
-  }else{ 
-    res.status(404).send('Element Not found')
-  }
-  
-  res.send(`El elemento con id: ${id} fue eliminado`);
-  } catch (error) {
-    next(error);
-  }
-});
+
+
+
+
+
+// routerT.put("/:id", async (req, res, next) => {
+//   //Solo modifica elementos de la BD
+//   try {
+//     const { id } = req.params;
+//     const { diet, api } = req.body;
+//     if (diet) {
+//       await Type.update(
+//         { diet: diet, api: api },
+//         {
+//           where: {
+//             id: {
+//               [Op.eq]: id,
+//             },
+//           },
+//         }
+//       );
+//       res.send("elemento actualizado");
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+// routerT.delete("/", async (req, res, next) => {
+//   try {
+//       //Solo modifica elementos de la BD
+//   const { id } = req.query;
+//   let verifica = await Type.findOne({
+//     where: { id: id }
+//   })
+
+//   if (verifica) {
+//     await Type.destroy({
+//       where: {
+//         id: {
+//           [Op.eq]: id,
+//         },
+//       },
+//     });
+//   }else{
+//     res.status(404).send('Element Not found')
+//   }
+
+//   res.send(`El elemento con id: ${id} fue eliminado`);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 
 module.exports = routerT;

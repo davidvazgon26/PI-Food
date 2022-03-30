@@ -95,7 +95,7 @@ routerR.get('/',(req, res,next) => {
                 let DB =[]
                 resultDB?DB = resultDB.map(item => item.dataValues):DB=[]
                 let Allresponse = DB.concat(API)
-                res.send(Allresponse)
+                res.status(200).send(Allresponse)
             });
         })
     } catch (error) {
@@ -135,7 +135,7 @@ routerR.post('/', async (req, res,next) => {
     try {
         let resultado  = acomodarDatosDB(req.body)
         let result = await Recipe.create(resultado)
-        res.status(201).send(result)
+        res.statusCode(200).send(result)
     } catch (error) {
         next(error);
     }
@@ -145,8 +145,7 @@ routerR.post('/', async (req, res,next) => {
 routerR.post('/:recipeId/type/:typeId', async (req, res, next)=>{
     try {
         const {recipeId, typeId} = req.params;
-        console.log(recipeId)
-        console.log(typeId)
+     
         const recipe = await Recipe.findByPk(recipeId)
         await recipe.addTypes(typeId)
         res.status(200).send('se creo la relacion')
@@ -155,46 +154,57 @@ routerR.post('/:recipeId/type/:typeId', async (req, res, next)=>{
     }
 })
 
-// PUT por query y body  /api/recipes?idReceta= id a modificar
-routerR.put('/', async (req, res,next) => {
-  try {
-    let {idReceta} = req.query
-    for (const key in obj = req.body) {
-        let prop = {}
-        prop[key] = obj[key]
-        await Recipe.update(prop,
-        {
-            where: {
-              id: {
-                [Op.eq]: idReceta,
-              },
-            },
-          }
-        )
-    }
-    res.send('Se actualizo el registro')
-  } catch (error) {
-      next(error);
-  }
-})
 
-//DELETE por params /api/recipes/:id
-routerR.delete('/:id',async(req, res,next) => {
-   try {
-    let {id} = req.params
-    let verifica = await Recipe.finOnde({
-        where: {id:id}
-    })
-    if (verifica) {
-        await Recipe.destroy({
-            where: {id:id}
-        }).then(result => res.send('Se elimino el id: '+ id))
-    }else{ 
-        res.status(404).send('Element Not found')
-    }
+
+
+
+
+
+
+
+
+
+
+// // PUT por query y body  /api/recipes?idReceta= id a modificar
+// routerR.put('/', async (req, res,next) => {
+//   try {
+//     let {idReceta} = req.query
+//     for (const key in obj = req.body) {
+//         let prop = {}
+//         prop[key] = obj[key]
+//         await Recipe.update(prop,
+//         {
+//             where: {
+//               id: {
+//                 [Op.eq]: idReceta,
+//               },
+//             },
+//           }
+//         )
+//     }
+//     res.send('Se actualizo el registro')
+//   } catch (error) {
+//       next(error);
+//   }
+// })
+
+// //DELETE por params /api/recipes/:id
+// routerR.delete('/:id',async(req, res,next) => {
+//    try {
+//     let {id} = req.params
+//     let verifica = await Recipe.finOnde({
+//         where: {id:id}
+//     })
+//     if (verifica) {
+//         await Recipe.destroy({
+//             where: {id:id}
+//         }).then(result => res.send('Se elimino el id: '+ id))
+//     }else{ 
+//         res.status(404).send('Element Not found')
+//     }
     
-   } catch (error) {
-       next(error);
-   }    
-})
+//    } catch (error) {
+//        next(error);
+//    }    
+// })
 module.exports = routerR;
