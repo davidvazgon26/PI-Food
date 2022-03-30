@@ -1,11 +1,11 @@
 const { Router } = require('express');
+const routerR = Router();
 require('dotenv').config();
 const { APIKey } = process.env;
 const {Recipe, Type} = require('../db');
 const fetch = require("node-fetch")
 const axios = require('axios')
 const {Op} = require('sequelize')
-const routerR = Router();
 // const ctrl = require('./controller')
 
 const acomodarDatos = (item) =>{
@@ -179,12 +179,20 @@ routerR.put('/', async (req, res,next) => {
 })
 
 //DELETE por params /api/recipes/:id
-routerR.delete('/:id',(req, res,next) => {
+routerR.delete('/:id',async(req, res,next) => {
    try {
     let {id} = req.params
-    Recipe.destroy({
+    let verifica = await Recipe.finOnde({
         where: {id:id}
-    }).then(result => res.send('Se elimino el id: '+ id))
+    })
+    if (verifica) {
+        await Recipe.destroy({
+            where: {id:id}
+        }).then(result => res.send('Se elimino el id: '+ id))
+    }else{ 
+        res.status(404).send('Element Not found')
+    }
+    
    } catch (error) {
        next(error);
    }    

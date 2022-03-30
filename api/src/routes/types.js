@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const {Type} = require('../db');
 const routerT = Router();
+const {Type} = require('../db');
 const {Op} = require('sequelize')
 require('dotenv').config();
 const { APIKey } = process.env;
@@ -118,7 +118,7 @@ routerT.delete("/", async (req, res, next) => {
       },
     });
   }else{ 
-    res.status(404).send('Not found')
+    res.status(404).send('Element Not found')
   }
   
   res.send(`El elemento con id: ${id} fue eliminado`);
