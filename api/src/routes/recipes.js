@@ -135,7 +135,7 @@ routerR.post('/', async (req, res,next) => {
     try {
         let resultado  = acomodarDatosDB(req.body)
         let result = await Recipe.create(resultado)
-        res.statusCode(200).send(result)
+        res.send(result)
     } catch (error) {
         next(error);
     }
@@ -148,7 +148,7 @@ routerR.post('/:recipeId/type/:typeId', async (req, res, next)=>{
      
         const recipe = await Recipe.findByPk(recipeId)
         await recipe.addTypes(typeId)
-        res.status(200).send('se creo la relacion')
+        res.send('se creo la relacion')
     } catch (error) {
         next(error);
     }
