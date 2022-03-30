@@ -30,7 +30,7 @@ export default function AddRecipe(){
 
     useEffect(()=>{
         dispatch(getTypes())
-    },[dispatch])
+    },[])
 
     function onSubmit(event) {
       event.preventDefault();
@@ -114,7 +114,7 @@ return (
         className={s.btnRegresar}
         type="submit"
         value="Regresar"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/recipes")}
       />
     </div>
     <h2 className={s.h2}>Form for Add new Recipes or Diets</h2>

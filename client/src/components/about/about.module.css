@@ -79,6 +79,12 @@ p {
     font-size: 16px;
 }
 
+.parrafo a:hover{
+    pointer-events:all;
+    cursor:pointer;
+    color: rgb(216, 46, 46)
+}
+
 .parrafoFinal{
     margin-bottom:30px
 }

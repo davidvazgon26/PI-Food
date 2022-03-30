@@ -21,12 +21,12 @@ export default function AddType(){
     
     function onSubmit(event){
         event.preventDefault()
+        setCont(cont+1)
         axios.post("/api/types",diet)
         .then(response => {
             console.log(response)
         })
        document.querySelector('.inputDiet').value=""
-        setCont(cont+1)
     }
     
     function onInputChange(event){
@@ -56,7 +56,6 @@ export default function AddType(){
             type="text"
             placeholder="Diet Name"
             onChange={onInputChange}
-            
           />
           {!errorInput? null : <h4 className={s.errorname}>{errorInput}</h4>}
           <div className={s.btnDiv}>
