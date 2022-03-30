@@ -76,7 +76,7 @@ export default function AddRecipe(){
       //^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$
 
       if(event.target.name === 'image'){
-          if (!/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/.test(event.target.value)) {
+          if (!/^https?:\/\/[\w]+(\.[\w]+)+[/#?]?.*$/.test(event.target.value)) {
               setErrorImage('El dato ingresado no tiene la forma de una url valida')
           } else {
             setErrorImage('')

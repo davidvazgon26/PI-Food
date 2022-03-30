@@ -1,4 +1,4 @@
-import {GET_RECIPES, GET_TIPOS, SORT_ABC, SORT_BY_SCORE, FILTER_PLACE, DIET_FILTER, RECIPE_SEARCH, RESET, PAGINADO, DETAIL, CLEAN} from '../actions/actions.js'
+import {GET_RECIPES, GET_TIPOS, SORT_ABC, SORT_BY_SCORE, FILTER_PLACE, DIET_FILTER, RECIPE_SEARCH, RESET, PAGINADO, DETAIL} from '../actions/actions.js'
 
 const initialState ={
     recipes: [],
@@ -111,12 +111,7 @@ export default function recipeReducer(state=initialState, action){
                 ...state,
                 detalle: action.payload
             }
-        case CLEAN:
-            return{
-                ...state,
-                detalle:[]
-            }
-
+        
         default:
             return state;
     }

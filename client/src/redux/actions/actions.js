@@ -10,7 +10,6 @@ export const RECIPE_SEARCH = 'RECIPE_SEARCH'
 export const RESET = 'RESET'
 export const PAGINADO = 'PAGINADO'
 export const DETAIL = 'DETAIL'
-export const CLEAN = 'CLEAN'
 // export const POST_TYPES = 'POST_TYPES'
 
 
@@ -129,14 +128,7 @@ export function detalle(idReceta){
   
 }
 
-export function  clean(){
-  return function(dispatch){
-    dispatch({
-      type: CLEAN,
-    })
-  }
 
-}
 
 
 

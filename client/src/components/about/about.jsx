@@ -1,7 +1,7 @@
 //CSS
-import s from './about.module.css'
-import { DiHtml5, DiNodejs, DiPostgresql, DiReact, } from "react-icons/di";
-import { SiRedux, SiSequelize,SiExpress, SiJavascript, SiReactrouter, SiCss3, SiWebpack, SiHeroku, SiVercel, SiGit } from "react-icons/si";
+ import s from './about.module.css'
+ import { DiHtml5, DiNodejs, DiPostgresql, } from "react-icons/di";
+ import { SiRedux, SiSequelize,SiExpress, SiJavascript, SiReactrouter, SiCss3, SiWebpack, SiHeroku, SiVercel, SiGit } from "react-icons/si";
 
 
 //componentes
@@ -9,7 +9,7 @@ import NavBar from '../navbar/navbar.jsx'
 import Footer from '../footer/footer.jsx'
 
 
-export default function About(){
+ function About(){
     return (
       <div className={s.externo}>
         <div className={s.divMenu}>
@@ -194,8 +194,11 @@ export default function About(){
         <br />
         <section className={s.parrafoFinal}>
           <p className={s.parrafo}>
-            Se pretende liberar o hacer el Deploy de la aplicación en la
-            plataforma de Heroku, pero esa tarea por el momento está pendiente.
+          Se libero la aplicación a producción utilizando Heroku para el back end y Vercel para el front end quedando alojada la app en la siguiente ruta: <a
+              href="https://pi-food-eta.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >API Food</a>
           </p>
         </section>
         <div className={s.footer}>
@@ -205,4 +208,5 @@ export default function About(){
     );
 }
 
+export default About
 
