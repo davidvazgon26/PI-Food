@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export const GET_RECIPES = 'GET_RECIPES'
 export const GET_TIPOS = 'GET_TIPOS'
+export const POST_TYPE = 'POST_TYPE'
 export const SORT_ABC = 'SORT_ABC'
 export const SORT_BY_SCORE = 'SORT_BY_SCORE'
 export const FILTER_PLACE = 'FILTER_PLACE'
@@ -10,7 +11,8 @@ export const RECIPE_SEARCH = 'RECIPE_SEARCH'
 export const RESET = 'RESET'
 export const PAGINADO = 'PAGINADO'
 export const DETAIL = 'DETAIL'
-// export const POST_TYPES = 'POST_TYPES'
+export const FILTRO_DEMO = 'FILTRO_DEMO'
+// export const POST_TYPES = 'POST_TYPES' 
 
 
 export function getRecipes() {
@@ -27,6 +29,8 @@ export function getRecipes() {
   };
 }
 
+
+
 export function getTypes() {
   return async function (dispatch) {
     try {
@@ -41,17 +45,28 @@ export function getTypes() {
   };
 }
 
-// export function postType(diet){
-//   console.log(diet)
-//   return async function (dispatch) {
-//     try {
-//       let result = await axios.post("/api/types",diet)
+export function getFiltrado(){
+  return async function (dispatch){
+    dispatch({
+      type:FILTRO_DEMO,
+    })
+  }
+}
 
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   }
-// }
+export function postType(diet){
+  return async function (dispatch) {
+    try {
+      let result = await axios.post("/api/types",diet)
+      dispatch({
+        type:POST_TYPE,
+        payload: result.data
+      })
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 
 export function sortABC(orden){
   return {
@@ -134,5 +149,46 @@ export function detalle(idReceta){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export function postRecipe(recipe,arr){
+//   // console.log(recipe)
+//   // console.log(arr)
+//   return function (dispatch){
+//    try {
+//     axios.post("/api/recipes", recipe)
+//     .then(function (response) {
+//       arr.forEach((item) => {
+//         // console.log(response.data.id)
+//         // console.log(item)
+//         axios.post(`/api/recipes/${response.data.id}/type/${item}`)
+//           .then((response) => {
+//             // console.log(response);
+//             return response.data
+//           });
+//       });
+      
+//     })
+//     dispatch({
+//       type: POST_RECIPE,
+//     })
+//    } catch (error) {
+//      console.log(error);
+//    }
+//   }
+
+// }
 
 

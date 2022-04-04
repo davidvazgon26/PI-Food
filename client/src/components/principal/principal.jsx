@@ -8,6 +8,7 @@ import FiltroAPINoAPI from '../filtrados/filtroApiNoApi.jsx'
 import Paginado from '../paginado/paginado.jsx'
 import Reset from '../reset/reset.jsx'
 import Footer from '../footer/footer.jsx'
+import Filtro from '../filtroDemo/filtroDemo'
 
 import s from './principal.module.css'
 
@@ -18,6 +19,7 @@ export default function Principal () {
         <details className={s.menu}>
             <summary>Desplegar filtros</summary>
                 <div>
+                <Filtro/>
                     <OrderABC/>
                     <OrderByScore/>
                     <FiltrarDieta/>

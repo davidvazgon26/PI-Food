@@ -18,7 +18,6 @@ export default function Recipe({id, title, image, types}){
             })}
           </div>
        </div>
-
         
         <Link className={s.link} to={`/recipes/${id}`}>Ir a Detalle</Link>
         <p className={s.id}>Id: {typeof id === "string" ? id.substring(0, 8) : id}</p>

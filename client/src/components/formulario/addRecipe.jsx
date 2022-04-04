@@ -30,17 +30,17 @@ export default function AddRecipe(){
 
     useEffect(()=>{
         dispatch(getTypes())
-    },[])
+
+    },[dispatch])
+
 
     function onSubmit(event) {
       event.preventDefault();
       let arr = onCheckChange();
-      axios
-        .post("/api/recipes", recipe)
+      axios.post("/api/recipes", recipe)
         .then(function (response) {
           arr.forEach((item) => {
-            axios
-              .post(`/api/recipes/${response.data.id}/type/${item}`)
+            axios.post(`/api/recipes/${response.data.id}/type/${item}`)
               .then((response) => response.data);
           });
           navigate("/recipes");
@@ -195,7 +195,8 @@ return (
             })}
           </div>
           <div className={s.btnDiv}>
-            <input className={errorInput?s.btn2:s.btnSubmit} type="submit" value="Add recipe" disabled={errorInput?true:false}   />
+            <input className={errorInput||errorInputN1||errorInputN2||errorSummary?s.btn2:s.btnSubmit} type="submit" value="Add recipe" disabled={errorInput||errorInputN1||errorInputN2||errorSummary?true:false}   />
+            {/* <p>{errorInput||errorInputN1?"true":"false"}</p> */}
           </div>
         </form>
       </div>

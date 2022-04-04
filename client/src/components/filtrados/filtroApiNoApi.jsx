@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux';
-import {APIfilter, getTypes} from '../../redux/actions/actions'
+import {APIfilter} from '../../redux/actions/actions'
 
 //CSS
 import s from './filtroApiNoApi.module.css'
@@ -8,7 +8,7 @@ export default function FiltroAPINoAPI(){
     const dispatch = useDispatch();
 
     function onSelectChange(event){
-        dispatch(APIfilter(event.target.value),getTypes())
+        dispatch(APIfilter(event.target.value))
     }
 
     return(<div className={s.filterContainer}>

@@ -1,4 +1,4 @@
-import {GET_RECIPES, GET_TIPOS, SORT_ABC, SORT_BY_SCORE, FILTER_PLACE, DIET_FILTER, RECIPE_SEARCH, RESET, PAGINADO, DETAIL} from '../actions/actions.js'
+import {GET_RECIPES, GET_TIPOS, SORT_ABC, SORT_BY_SCORE, FILTER_PLACE, DIET_FILTER, RECIPE_SEARCH, RESET, PAGINADO, DETAIL, POST_TYPE, FILTRO_DEMO} from '../actions/actions.js'
 
 const initialState ={
     recipes: [],
@@ -8,7 +8,7 @@ const initialState ={
     message:[],
     detalle:{}
 }
-
+ 
 export default function recipeReducer(state=initialState, action){
     switch (action.type) {
         case GET_RECIPES:
@@ -22,6 +22,18 @@ export default function recipeReducer(state=initialState, action){
                ...state,
                types:action.payload,
            }
+        case POST_TYPE:
+            return{
+                ...state,
+                message:alert(action.payload)
+            }
+        case FILTRO_DEMO:
+            let resultado = state.recipesShow.filter(item=> parseInt(item.spoonacularScore) >= 98)
+            return{
+                ...state,
+                recipesShow: resultado
+            }
+        
         case SORT_ABC:
             let sortRecipes = [...state.filtroRecipes]
 

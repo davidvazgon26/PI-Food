@@ -15,7 +15,7 @@ export default function Detail(){
     useEffect(()=>{
        
       dispatch(detalle(idReceta));
-        
+
     },[idReceta, dispatch])
 
     // let texto = recipes.summary.replace(/&(lt|gt);/g,)
