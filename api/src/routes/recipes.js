@@ -22,7 +22,7 @@ const acomodarDatos = (item) =>{
      }
      return obj
 }
- 
+  
 const acomodarDatosDB = (item) =>{
     obj = {
         id: item.id,
